@@ -1,12 +1,12 @@
 package homework;
 
 import java.util.Map;
-import java.util.SortedMap;
+import java.util.NavigableMap;
 import java.util.TreeMap;
 
 public class CustomerService {
 
-    public final SortedMap<Customer, String> customers = new TreeMap<>();
+    private final NavigableMap<Customer, String> customers = new TreeMap<>();
 
     public Map.Entry<Customer, String> getSmallest() {
         final Map.Entry<Customer, String> entry = customers.firstEntry();
@@ -18,14 +18,8 @@ public class CustomerService {
                 entry.getValue());
     }
 
-    /**
-     * не понял как нужно было "правильно" это выполнить
-     */
     public Map.Entry<Customer, String> getNext(Customer customer) {
-        final Map.Entry<Customer, String> entry = customers.entrySet().stream()
-                .filter(it -> it.getKey().getScores() > customer.getScores())
-                .findFirst()
-                .orElse(null);
+        final Map.Entry<Customer, String> entry = customers.higherEntry(customer);
         if (entry == null) {
             return null;
         }
