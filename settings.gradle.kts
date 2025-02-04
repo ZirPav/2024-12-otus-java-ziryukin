@@ -1,5 +1,6 @@
 rootProject.name = "2024-12-otus-java-ziryukin"
 include("hw01-gradle")
+include("hw03-generics")
 
 
 pluginManagement {
