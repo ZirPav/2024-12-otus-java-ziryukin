@@ -1,7 +1,7 @@
 rootProject.name = "2024-12-otus-java-ziryukin"
 include("hw01-gradle")
 include("hw03-generics")
-
+include("hw12-solid")
 
 pluginManagement {
     val jgitver: String by settings
