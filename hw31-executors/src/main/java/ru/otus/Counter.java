@@ -8,8 +8,8 @@ public class Counter {
     private static final Logger logger = LoggerFactory.getLogger(Counter.class);
     private int prev = 1;
     private int count = 1;
+    private int inc = 1;
     private String sleepingThread = "Поток2";
-    private String operation = "plus";
 
     private synchronized void action() {
         while (!Thread.currentThread().isInterrupted()) {
@@ -25,16 +25,12 @@ public class Counter {
                     prev = count;
                     logger.info(String.valueOf(count));
                     if (count == 10) {
-                        operation = "minus";
+                        inc = -1;
                     }
                     if (count == 1) {
-                        operation = "plus";
+                        inc = 1;
                     }
-                    if ("plus".equals(operation)) {
-                        count = count + 1;
-                    } else {
-                        count = count - 1;
-                    }
+                    count = count + inc;
                 }
                 sleepingThread = Thread.currentThread().getName();
                 sleep();
